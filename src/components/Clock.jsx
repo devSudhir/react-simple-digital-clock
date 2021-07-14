@@ -7,7 +7,10 @@ export function Clock({ show }) {
   const updateTime = () => {
     setCurrentTime(new Date().toLocaleTimeString());
   };
-  setInterval(updateTime, 1000);
+  const id = setInterval(updateTime, 1000);
+  if (!show) {
+    clearInterval(id);
+  }
 
   return show ? (
     <>
